@@ -13,3 +13,6 @@
 # eide template
 *.ept
 *.eide-template
+
+/pcb/c51keypad/c51keypad-backups
+/pcb/c51keypad/fp-info-cache

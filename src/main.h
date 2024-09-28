@@ -8,7 +8,8 @@ typedef signed long int32_t;
 
 void ScanKey();
 void ProcessKey();
-void UART_Init();
+void Uart1_Init();
+void Uart1_SendByte(uint8_t Byte);
 void DelayMs(uint16_t _ms);
 void DisplayNumber(uint8_t num);
 
