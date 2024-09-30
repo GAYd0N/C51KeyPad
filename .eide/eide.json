@@ -40,7 +40,7 @@
           "beforeBuildTasks": [],
           "afterBuildTasks": [],
           "global": {
-            "ram-mode": "LARGE",
+            "ram-mode": "SMALL",
             "rom-mode": "LARGE"
           },
           "c/cpp-compiler": {

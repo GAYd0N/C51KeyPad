@@ -1,6 +1,5 @@
-#include <STRING.H>
-#include "config.h"
-#include "GPIO.h"
+//#include <STRING.H>
+//#include "config.h"
 #include "USART.h"
 
 #include "main.h"
@@ -16,7 +15,13 @@ const uint8_t displayCode[] = {0x40, 0x79, 0x24, 0x30, 0x19, 0x12, 0x03, 0x78, 0
 //  4   5   6   Enter
 //  1   2   3   Del
 //  0
-const uint8_t keyCode[17] = {5, 5, 5, 5, 7, 8, 9, 5, 4, 5, 6, 4, 1, 2, 3, 4, 0};
+const uint8_t keyCode[17] = {
+    KB_NUMLOCK, KB_PAD_DIV, KB_PAD_MUL, KB_PAD_MINUS, 
+    KB_PAD_7, KB_PAD_8, KB_PAD_9, KB_PAD_PLUS, 
+    KB_PAD_4, KB_PAD_5, KB_PAD_6, KB_PAD_ENTER, 
+    KB_PAD_1, KB_PAD_2, KB_PAD_3, KB_PAD_DEL, 
+    KB_PAD_0
+};
 
 // 五行四列
 Key_Var keyVar[17] = {0};
@@ -92,13 +97,12 @@ void ProcessKey(void)
 
 void GPIO_Init(void)
 {
-    GPIO_InitTypeDef GPIO_InitStructure;
-    GPIO_InitStructure.Pin  = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4;
-    GPIO_InitStructure.Mode = GPIO_PullUp;
-    GPIO_Inilize(GPIO_P1, &GPIO_InitStructure);
+    // 准双向口模式
+    P1M0 = 0x00;
+    P1M1 = 0x00;
 
-    GPIO_InitStructure.Pin  = GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_6 | GPIO_Pin_7;
-    GPIO_Inilize(GPIO_P3, &GPIO_InitStructure);
+    P3M0 = 0x00;
+    P3M1 = 0x00;
 }
 
 void Uart1_Init(void) // 9600bps@11.0592MHz
@@ -130,7 +134,7 @@ void Uart1_Init(void) // 9600bps@11.0592MHz
     COMx_InitStructure.UART_Polity        = PolityLow;        // 中断优先级, PolityLow,PolityHigh
     COMx_InitStructure.UART_P_SW          = UART1_SW_P30_P31; // 切换端口,   UART1_SW_P30_P31,UART1_SW_P36_P37,UART1_SW_P16_P17(必须使用内部时钟)
     COMx_InitStructure.UART_RXD_TXD_Short = DISABLE;          // 内部短路RXD与TXD, 做中继, ENABLE,DISABLE
-    USART_Configuration(USART1, &COMx_InitStructure);         // 初始化串口1 USART1,USART2
+    USART_Configuration(&COMx_InitStructure);         // 初始化串口1 USART1,USART2
 }
 
 // 串口发送一个字节数据
@@ -148,7 +152,8 @@ void Uart1_SendKey(void)
     for (i = 0; i < ARRAY_ENDINDEX(keyByte); i++) {
         TX1_write2buff(keyByte[i]);
     }
-    memset(keyByte, 0, sizeof(keyByte));
+    for (i = 0; i < ARRAY_ENDINDEX(keyByte); i++)
+        keyByte[i] = 0;
 }
 
 void Delay1ms(void) //@11.0592MHz

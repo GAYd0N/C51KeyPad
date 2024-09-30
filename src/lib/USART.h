@@ -6,11 +6,8 @@
 
 #define	COM_TX1_Lenth	128
 #define	COM_RX1_Lenth	128
-#define	COM_TX2_Lenth	128
-#define	COM_RX2_Lenth	128
 
 #define	USART1	1
-#define	USART2	2
 
 #define	UART_ShiftRight	0		//同步移位输出
 #define	UART_8bit_BRTx	(1<<6)	//8位数据,可变波特率
@@ -18,10 +15,6 @@
 #define	UART_9bit_BRTx	(3<<6)	//9位数据,可变波特率
 
 #define	UART1_SW_P30_P31	0
-#define	UART1_SW_P36_P37	(1<<6)
-#define	UART1_SW_P16_P17	(2<<6)	//必须使用内部时钟
-#define	UART2_SW_P10_P11	0
-#define	UART2_SW_P46_P47	1
 
 
 #define	TimeOutSet1		5
@@ -58,20 +51,11 @@ typedef struct
 
 } COMx_InitDefine; 
 
-extern	COMx_Define	COM1,COM2;
+extern	COMx_Define	COM1;
 extern	u8	xdata TX1_Buffer[COM_TX1_Lenth];	//发送缓冲
-extern	u8 	xdata RX1_Buffer[COM_RX1_Lenth];	//接收缓冲
-extern	u8	xdata TX2_Buffer[COM_TX2_Lenth];	//发送缓冲
-extern	u8 	xdata RX2_Buffer[COM_RX2_Lenth];	//接收缓冲
 
-u8	USART_Configuration(u8 UARTx, COMx_InitDefine *COMx);
+u8	USART_Configuration(COMx_InitDefine *COMx);
 void TX1_write2buff(u8 dat);	//写入发送缓冲，指针+1
-void TX2_write2buff(u8 dat);	//写入发送缓冲，指针+1
-void PrintString1(u8 *puts);
-void PrintString2(u8 *puts);
-
-//void COMx_write2buff(COMx_Define *COMx, u8 dat);	//写入发送缓冲，指针+1
-//void PrintString(COMx_Define *COMx, u8 *puts);
 
 #endif
 
