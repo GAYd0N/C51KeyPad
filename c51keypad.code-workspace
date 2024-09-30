@@ -28,7 +28,8 @@
             "STC15.H": "cpp",
             "STC15Fxxxx.H": "cpp",
             "INTRINS.H": "cpp",
-            "USART.C": "cpp"
+            "USART.C": "cpp",
+            "USART1.C": "cpp"
         },
         "C_Cpp.default.configurationProvider": "cl.eide",
         "[yaml]": {

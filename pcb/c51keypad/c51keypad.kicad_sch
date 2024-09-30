@@ -2510,6 +2510,10 @@
 		(uuid "7d6643aa-e1c5-4821-a7d8-40fcee567997")
 	)
 	(no_connect
+		(at 119.38 38.1)
+		(uuid "91f595cc-ea34-4444-af41-ca89bd834b0b")
+	)
+	(no_connect
 		(at 198.12 39.37)
 		(uuid "9926506b-ecd0-447c-91fb-930e1cf739e5")
 	)
@@ -2848,16 +2852,6 @@
 			(type default)
 		)
 		(uuid "2fd7f6a3-dcab-4ea3-ba36-07c5068f6ba8")
-	)
-	(wire
-		(pts
-			(xy 113.03 38.1) (xy 119.38 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "367ca6da-02bf-46dc-920c-9e90885f42e5")
 	)
 	(wire
 		(pts
@@ -3978,17 +3972,6 @@
 			(justify left bottom)
 		)
 		(uuid "956e3817-fc8c-4114-9c63-4d2ae660b83c")
-	)
-	(label "RXD"
-		(at 113.03 38.1 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "98fd8d17-c3bf-48bc-85e3-0b0377ee5fab")
 	)
 	(label "ROW4"
 		(at 189.23 34.29 0)
