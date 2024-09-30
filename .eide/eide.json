@@ -24,7 +24,7 @@
       "uploader": "Custom",
       "uploadConfig": {
         "bin": "",
-        "commandLine": "python ./tools/stcflash.py -p ${port} \"${hexFile}\"",
+        "commandLine": "python ./tools/stcflash.py -p ${port} \"${programFile}\"",
         "eraseChipCommand": ""
       },
       "uploadConfigMap": {},
@@ -40,7 +40,7 @@
           "beforeBuildTasks": [],
           "afterBuildTasks": [],
           "global": {
-            "ram-mode": "SMALL",
+            "ram-mode": "LARGE",
             "rom-mode": "LARGE"
           },
           "c/cpp-compiler": {

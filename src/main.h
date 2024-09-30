@@ -1,3 +1,22 @@
+#define        KB_NUMLOCK            0x53
+#define        KB_PAD_DIV            0x54    ///
+#define        KB_PAD_MUL            0x55    //*
+#define        KB_PAD_MINUS        0x56    //-
+#define        KB_PAD_PLUS           0x57    //+
+#define        KB_PAD_ENTER        0x58
+#define        KB_PAD_1            0x59
+#define        KB_PAD_2            0x5A
+#define        KB_PAD_3            0x5B
+#define        KB_PAD_4            0x5C
+#define        KB_PAD_5            0x5D
+#define        KB_PAD_6            0x5E
+#define        KB_PAD_7            0x5F
+#define        KB_PAD_8            0x60
+#define        KB_PAD_9            0x61
+#define        KB_PAD_0            0x62
+#define        KB_PAD_DEL           0x63
+
+
 typedef unsigned char uint8_t;
 typedef unsigned int uint16_t;
 typedef unsigned long uint32_t;
@@ -6,16 +25,20 @@ typedef signed char int8_t;
 typedef signed int int16_t;
 typedef signed long int32_t;
 
-void ScanKey();
-void ProcessKey();
-void Uart1_Init();
-void Uart1_SendByte(uint8_t Byte);
-void DelayMs(uint16_t _ms);
-void DisplayNumber(uint8_t num);
-
 typedef struct Key_Var
 {
     uint8_t key_level;
     uint8_t key_state;
     uint8_t key_press;
 } Key_Var;
+
+void ScanKey(void);
+void ProcessKey(void);
+void GPIO_Init(void);
+void Uart1_Init(void);
+// void Uart1_SendByte(uint8_t Byte);
+void Uart1_SendKey(void);
+void Delay1ms(void);
+void DisplayNumber(uint8_t num);
+
+

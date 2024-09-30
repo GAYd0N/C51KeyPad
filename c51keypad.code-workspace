@@ -24,7 +24,11 @@
             "*.cc": "cpp",
             "REG52.H": "cpp",
             "MATH.H": "cpp",
-            "CH552.H": "cpp"
+            "CH552.H": "cpp",
+            "STC15.H": "cpp",
+            "STC15Fxxxx.H": "cpp",
+            "INTRINS.H": "cpp",
+            "USART.C": "cpp"
         },
         "C_Cpp.default.configurationProvider": "cl.eide",
         "[yaml]": {
